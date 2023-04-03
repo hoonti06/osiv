@@ -17,7 +17,7 @@ public interface MemberDataDao extends Repository<MemberData, String> {
 
     List<MemberData> findAll(Specification<MemberData> spec, Pageable pageable);
 
-    List<MemberData> getRange(Specification<MemberData> spec, Rangeable rangeable);
+//    List<MemberData> getRange(Specification<MemberData> spec, Rangeable rangeable);
 
     List<MemberData> findFirst3ByNameLikeOrderByName(String name);
     Optional<MemberData> findFirstByNameLikeOrderByName(String name);

@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
@@ -28,10 +29,10 @@ public class OrderController {
 
 
   @PostMapping("/orders/order")
-  public String order(@ModelAttribute("orderReq") OrderRequest orderRequest,
-      BindingResult bindingResult) {
-    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    orderRequest.setOrdererMemberId(MemberId.of(user.getUsername()));
+  public String order(@RequestBody OrderRequest orderRequest, BindingResult bindingResult) {
+//    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//    orderRequest.setOrdererMemberId(MemberId.of(user.getUsername()));
+    orderRequest.setOrdererMemberId(MemberId.of("1"));
     try {
       OrderNo orderNo = placeOrderService.placeOrder(orderRequest);
       return orderNo.getNumber();

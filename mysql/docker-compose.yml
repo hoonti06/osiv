@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  localstack:
+    container_name: "mysql2"
+    image: mysql:8.0.22
+    ports:
+      - "${PORT-3306}:3306"
+    volumes:
+      - ./conf.d:/etc/mysql/conf.d
+      - ./initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: shop
+      MYSQL_USER: shopuser
+      MYSQL_PASSWORD: shoppass
+      MYSQL_ROOT_PASSWORD: shoppass
+      TZ: Asia/Seoul
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --range_optimizer_max_mem_size=16777216
+#    privileged: true
+#    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+#    networks:
+#      - internal_network
