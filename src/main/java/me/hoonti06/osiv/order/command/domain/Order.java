@@ -1,20 +1,15 @@
-package me.hoonti06.osiv.order.domain;
+package me.hoonti06.osiv.order.command.domain;
 
 import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import me.hoonti06.osiv.common.jpa.MoneyConverter;
 import me.hoonti06.osiv.common.model.Money;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "purchase_order")
@@ -121,13 +116,13 @@ public class Order {
   public void changeShippingInfo(ShippingInfo newShippingInfo) {
     verifyNotYetShipped();
     setShippingInfo(newShippingInfo);
-    Events.raise(new ShippingInfoChangedEvent(number, newShippingInfo));
+//    Events.raise(new ShippingInfoChangedEvent(number, newShippingInfo));
   }
 
   public void cancel() {
     verifyNotYetShipped();
     this.state = OrderState.CANCELED;
-    Events.raise(new OrderCanceledEvent(number.getNumber()));
+//    Events.raise(new OrderCanceledEvent(number.getNumber()));
   }
 
   private void verifyNotYetShipped() {
@@ -150,7 +145,7 @@ public class Order {
   public void startShipping() {
     verifyShippableState();
     this.state = OrderState.SHIPPED;
-    Events.raise(new ShippingStartedEvent(number.getNumber()));
+//    Events.raise(new ShippingStartedEvent(number.getNumber()));
   }
 
   private void verifyShippableState() {

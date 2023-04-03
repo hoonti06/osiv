@@ -1,0 +1,28 @@
+POST http://localhost:8080/orders/order
+Content-Type: application/json
+
+{
+  "orderProducts": [
+    {
+      "productId": 1,
+      "quantity": 1
+    },
+    {
+      "productId": 1,
+      "quantity": 1
+    }
+  ],
+  "ordererMemberId": 10,
+  "shippingInfo": {
+    "address": {
+      "zipCode": "12345",
+      "address1": "Seoul",
+      "address2": "Gangnam"
+    },
+    "message" : "hi",
+    "receiver": {
+      "name": "hoon",
+      "phone": "010-0000-0000"
+    }
+  }
+}
