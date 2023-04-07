@@ -13,10 +13,7 @@ import me.hoonti06.osiv.order.command.application.OrderProduct;
 import me.hoonti06.osiv.order.command.application.OrderRequest;
 import me.hoonti06.osiv.order.command.application.PlaceOrderService;
 import me.hoonti06.osiv.order.command.domain.OrderNo;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,7 +29,7 @@ public class OrderController {
   public String order(@RequestBody OrderRequest orderRequest, BindingResult bindingResult) {
 //    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //    orderRequest.setOrdererMemberId(MemberId.of(user.getUsername()));
-    orderRequest.setOrdererMemberId(MemberId.of("1"));
+    orderRequest.setOrdererMemberId(MemberId.of("user1"));
     try {
       OrderNo orderNo = placeOrderService.placeOrder(orderRequest);
       return orderNo.getNumber();

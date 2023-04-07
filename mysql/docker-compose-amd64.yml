@@ -3,6 +3,7 @@ services:
   mysql:
     container_name: "mysql2"
     image: mysql:8.0.22
+    platform: linux/amd64
     ports:
       - "${PORT-3306}:3306"
     volumes:

@@ -4,15 +4,15 @@ Content-Type: application/json
 {
   "orderProducts": [
     {
-      "productId": 1,
-      "quantity": 1
+      "productId": "prod-001",
+      "quantity": 3
     },
     {
-      "productId": 1,
-      "quantity": 1
+      "productId": "prod-002",
+      "quantity": 2
     }
   ],
-  "ordererMemberId": 10,
+  "ordererMemberId": "1",
   "shippingInfo": {
     "address": {
       "zipCode": "12345",
